@@ -12,45 +12,75 @@
 
   <body>
     <header>
-      
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class=container>
           <a class="navbar-brand" href="/">Bookers</a>
-          
-            <ul>
+          <button class="navbar-toggler collapsed" type="button" date-toggle="collapse" data-taget="#navbarNavDropdown" aria-expanded="false" aria-label="Toggle navgation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-collapse collapse" id="navbarNavDropdown">
+            <ul class="navbar ml-auto list-unstyled">
               <% if user_signed_in? %>
                 <li>
-                  <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+                  <%= link_to root_path,class: "nav-link text-light" do %><!--usershow-->
+                    <i class="fa-solid fa-house-chimney">Home</i>
+                  <% end %>
                 </li>
-               
-                <% else %>
-                
                 <li>
-                  <i class="fa-solid fa-house-chimney"><%= link_to "Home" %></i>
+                  <%= link_to users_path,class: "nav-link text-light" do %>
+                    <i class="fa-solid fa-users">Users</i>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to books_path,class: "nav-link text-light" do %>
+                    <i class="fa-solid fa-book-open">Books</i>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-light" do %>
+                    <i class="fa-solid fa-right-from-bracket">Log out</i>
+                  <% end %>
+                </li>
+
+              <% else %>
+
+                 <li>
+                  <%= link_to root_path, class: "nav-link text-light" do %>
+                    <i class="fa-solid fa-house-chimney">Home</i>
+                  <% end %>
                 </li>
 
                 <li>
-                  <i class="fa-solid fa-link"><%= link_to "About", about_path %></i>
+                  <%= link_to about_path, class: "nav-link text-light" do %>
+                    <i class="fa-solid fa-link">About</i>
+                  <% end %>
                 </li>
 
                 <li>
-                  <i class="fa-solid fa-user-plus"><%= link_to "Sign up", new_user_registration_path %></i>
+                  <%= link_to new_user_registration_path, class: "nav-link text-light" do %>
+                    <i class="fa-solid fa-user-plus">Sign up</i>
+                  <% end %>
                 </li>
 
                 <li>
-                  <i class="fa-solid fa-right-to-bracket"><%= link_to "Log in", new_user_session_path %></i>
+                  <%= link_to new_user_session_path, class: "nav-link text-light" do %>
+                  <i class="fa-solid fa-right-to-bracket">Log in</i>
+                  <% end %>
                 </li>
               <% end %>
             </ul>
-            
+
+          </div>
         </div>
-        
+      </nav>
     </header>
 
     <main>
 
-        <%= yield %>
+      <%= yield %>
 
     </main>
+
     <footer>
       <div class="container mt-5">
         <div class="row">
