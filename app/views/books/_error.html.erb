@@ -1,0 +1,10 @@
+<% if book.errors.any? %>
+  <div id="error-message">
+    <h2 class="error-message-comment"><%= pluralize(book.errors.count,"error") %> prohibited this obj from being saved:</h2>
+    <ul>
+      <% book.errors.full_messages.each do |messege| %>
+        <li><%= messege %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

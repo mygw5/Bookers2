@@ -1,21 +1,33 @@
-<div class="continer px-5 mx-0">
+<div class="container px-5 mx-0">
+  <%= render '/books/error', book: @newbook %>
   <div class="row">
-    <%= render '/books/newform', book: @newbook, user: @user %>
-    <div class="col-8 pl-5">
+    <div class="col-md-3">
+      <%= render '/books/newform', book: @newbook, user: @user %>
+    </div>
+    <div class="col-md-9 pl-5">
       <h2>Books</h2>
-      <table class="table">
-        <tr>
-          <th></th>
-          <th>Title</th>
-          <th>Opinion</th>
-        </tr>
-          <% @books.each do |book| %>
+      <table class="table table-hover table-inverse">
+        <thead>
           <tr>
-            <th><%= image_tag @user.get_profile_image(80,80) %></th>
-            <th><%= book.title %></th>
-            <th><%= book.body %></th>
-          <% end %>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
           </tr>
+        </thead>
+        <% @books.each do |book| %>
+          <tbody>
+            <tr>
+              <th>
+                <%= link_to book.user do %>
+                  <%= image_tag @user.get_profile_image(80,80) %>
+                <% end %>
+              </th>
+              <th><%= link_to book.title, book_path(book.id) %></th>
+              <th><%= book.body %></th>
+            </tr>
+          </tbody>
+        <% end %>
+
       </table>
     </div>
   </div>
