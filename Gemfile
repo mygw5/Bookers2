@@ -50,16 +50,12 @@ group :test do
     gem 'rspec-rails'
     gem "factory_bot_rails"
     gem 'faker'
-
   # Easy installation and use of web drivers to run system tests with browsers
-
 end
 
+  # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+  gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+  gem 'devise'
 
-gem 'devise'
-
-
-gem 'net-smtp'
+  gem 'net-smtp'
